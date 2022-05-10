@@ -4,13 +4,18 @@ import java.util.Date;
 
 public class Student 
 {
-    private int id;
+    private int id = 0;
     private String lastname;
     private String firstname;
     private Date birthDay;
     private String birthLocate;
     private String address;
     private String nationality;
+
+    public void Student()
+    {
+        ++this.id;
+    }
 
     public int getId() {
         return id;
