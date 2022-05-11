@@ -99,16 +99,15 @@ public class UserModel
         return response;
     }
 
-    public int update(int id, String attribute, String value) 
+    public int update(int id, String value, String query) 
     {
         int response = 0;
-        String query = "update user set login = ? where id = ?";
+        // String query = "update user set login = ? where id = ?";
 
         try
         {
             PreparedStatement preparedStmt = connect.prepareStatement(query);
             
-            // preparedStmt.setString(1, attribute);
             preparedStmt.setString(1, value);
             preparedStmt.setInt(2, id);
 

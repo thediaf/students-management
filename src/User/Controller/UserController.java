@@ -92,8 +92,24 @@ public class UserController
         String attribute = this.scanner.next();
         System.out.print("Donnez la valeur: ");
         String value = this.scanner.next();
-
-        int response = userModel.update(id, attribute, value);
+        String query = ""; 
+        switch (attribute) {
+            case "nom":
+                query = "update user set lastname = ? where id = ?";
+                break;
+            case "prenom":
+                query = "update user set firstname = ? where id = ?";
+                break;
+            case "login":
+                query = "update user set login = ? where id = ?";
+                break;
+            case "password":
+                query = "update user set lastname = ? where id = ?";
+                break;
+            default:
+                break;
+        }
+        int response = userModel.update(id, value, query);
 
         userView.update(response);
     }
