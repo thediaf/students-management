@@ -16,13 +16,18 @@ public class Main
         UserController userController = new UserController();
         // userController.insert();
 
+        // try {
+        //     userController.select();
+        // } catch (SQLException e) {
+        //     // TODO Auto-generated catch block
+        //     e.printStackTrace();
+        // }
+
         try {
-            userController.select();
+            userController.menu();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
-        userController.update();
     }
 }

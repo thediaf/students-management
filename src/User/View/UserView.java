@@ -9,6 +9,19 @@ import User.Entity.User;
 
 public class UserView 
 {
+    public void menu()
+    {
+        System.out.println("+ --------------------------------------- + ");
+        System.out.println("|                   MENU                  | ");
+        System.out.println("+ --------------------------------------- + ");
+        System.out.println("|       1 - Afficher toute la liste       | ");   
+        System.out.println("|       2 - Ajouter un utilisateur        | ");   
+        System.out.println("|       3 - Modifier un utilisateur       | ");   
+        System.out.println("|       4 - Supprimer un utilisateur      | ");   
+        System.out.println("|       5 - Quitter                       | "); 
+        System.out.println("+ --------------------------------------- + ");   
+    }
+    
     public void insert(boolean result) 
     {
         

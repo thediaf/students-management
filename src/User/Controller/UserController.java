@@ -10,6 +10,44 @@ import User.View.UserView;
 
 public class UserController 
 {
+    public void menu() throws SQLException
+    {
+        Scanner scanner = new Scanner(System.in);
+        UserView userView = new UserView();
+        int choice;
+        
+        do {
+            userView.menu();
+            System.out.print("Choisissez une option: ");
+            choice = scanner.nextInt();
+            switch (choice) {
+                case 1:
+                    System.out.print("\n ############   Affichage de la liste   ###########\n ");
+                    this.select();
+                    break;
+                case 2:
+                    System.out.print("\n ############   Ajouter un utilisateur   ###########\n ");
+                    this.insert();
+                    break;
+                case 3:
+                    System.out.print("\n ############   Modifier un utilisateur   ###########\n ");
+                    this.update();
+                    break;
+                case 4:
+                    System.out.print("\n ############   Supprimer un utilisateur   ###########\n ");
+                    this.delete();
+                    break;
+                case 5:
+                    System.out.print("\n ############   Au revoir (-_>)   ###########\n ");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.print("\n ############   Au revoir (-_>)   ###########\n ");
+                    break;
+            }
+        } while (choice != 5);
+    }
+    
     public void insert() 
     {
         Scanner scanner = new Scanner(System.in);
