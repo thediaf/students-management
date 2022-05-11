@@ -12,9 +12,9 @@ public class Main
 
         // UserController userController = new UserController();
 
-        // userController.insert();
-
+        
         UserController userController = new UserController();
+        // userController.insert();
 
         try {
             userController.select();
@@ -23,6 +23,6 @@ public class Main
             e.printStackTrace();
         }
 
-        userController.delete();
+        userController.update();
     }
 }

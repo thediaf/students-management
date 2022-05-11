@@ -38,12 +38,21 @@ public class UserView
     }
 
     public void delete(boolean response) 
-    {
-        
+    {   
         if (response) {
-            System.out.println("Utilisateur insere");
+            System.out.println("Utilisateur supprime");
         }
         else
             System.out.println("Une erreur est subvenue");
-    }    
+    } 
+    
+    public void update(int response) 
+    {
+        
+        if (response != 0) {
+            System.out.println("Utilisateur modifie");
+        }
+        else
+            System.out.println("Une erreur est subvenue");
+    }
 }

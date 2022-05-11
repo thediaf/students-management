@@ -42,6 +42,24 @@ public class UserController
         userView.displayUsers(result);
     }
 
+    public void update()  
+    {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Donnez l'id de l'utilisateur: ");
+        int id = scanner.nextInt();
+        System.out.print("Donnez l'attribut: ");
+        String attribute = scanner.next();
+        System.out.print("Donnez la valeur: ");
+        String value = scanner.next();
+
+        UserModel userModel = new UserModel();
+        int response = userModel.update(id, attribute, value);
+
+        UserView userView = new UserView();
+        userView.update(response);
+    }
+
     public void delete()  
     {
         Scanner scanner = new Scanner(System.in);
