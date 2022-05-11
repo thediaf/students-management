@@ -1,16 +1,12 @@
 package User.Entity;
 
-import java.util.Date;
-
 public class User 
 {
     private int id = 0;
     private String lastname;
     private String firstname;
-    private Date birthDay;
-    private String birthLocate;
-    private String address;
-    private String nationality;
+    private String login;
+    private String password;
 
     public void User()
     {
@@ -41,36 +37,20 @@ public class User
         this.firstname = firstname;
     }
 
-    public Date getBirthDay() {
-        return birthDay;
+    public String getLogin() {
+        return login;
     }
 
-    public void setBirthDay(Date birthDay) {
-        this.birthDay = birthDay;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
-    public String getBirthLocate() {
-        return birthLocate;
+    public String getPassword() {
+        return password;
     }
 
-    public void setBirthLocate(String birthLocate) {
-        this.birthLocate = birthLocate;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getNationality() {
-        return nationality;
-    }
-
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 }
