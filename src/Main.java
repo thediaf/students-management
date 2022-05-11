@@ -4,6 +4,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import User.Controller.UserController;
+
 /**
  * Main
  */
@@ -46,17 +48,21 @@ public class Main {
 
  
     public static void main(String args[]) {
-        try {
-            // Connection con = DriverManager.getConnection(url, user, password);
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/DGI_ESP","root","root"); 
-            // PreparedStatement ps = connection.prepareStatement("CREATE DATABASE java_exercise");
-            // int result = ps.executeUpdate();
-            System.out.println("Success");
+        // try {
+        //     // Connection con = DriverManager.getConnection(url, user, password);
+        //     Class.forName("com.mysql.jdbc.Driver");
+        //     Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/java_exercice","root","root"); 
+        //     // PreparedStatement ps = connection.prepareStatement("CREATE DATABASE java_exercise");
+        //     // int result = ps.executeUpdate();
+        //     System.out.println("Success");
         
             
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        // } catch (Exception e) {
+        //     e.printStackTrace();
+        // }
+
+        UserController userController = new UserController();
+
+        userController.insert();
     }
 }

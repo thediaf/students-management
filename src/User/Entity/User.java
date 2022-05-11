@@ -8,9 +8,12 @@ public class User
     private String login;
     private String password;
 
-    public void User()
+    public User(String lastname, String firstname, String login, String password)
     {
-        ++this.id;
+        this.setLastname(lastname);
+        this.setFirstname(firstname);
+        this.setLogin(login);
+        this.setPassword(password);
     }
 
     public int getId() {
