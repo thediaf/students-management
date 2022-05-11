@@ -1,5 +1,7 @@
 package User.Controller;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import User.Entity.User;
@@ -29,5 +31,14 @@ public class UserController
 
         UserView userView = new UserView();
         userView.insert(result);
-    }   
+    }
+    
+    public void select() throws SQLException 
+    {
+        UserModel userModel = new UserModel();
+        ResultSet result =  userModel.select();
+
+        UserView userView = new UserView();
+        userView.displayUsers(result);
+    }
 }

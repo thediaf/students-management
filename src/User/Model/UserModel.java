@@ -49,4 +49,32 @@ public class UserModel
 
         return result;
     }
+
+    public ResultSet select() 
+    {
+        ResultSet result = null;
+
+        String query = "SELECT * FROM user";
+
+        try
+        {
+
+            Connection connect = connexion();
+
+            Statement statement = connect.createStatement();
+            
+            result = statement.executeQuery(query);
+            
+
+            // statement.close();
+
+        }
+        catch (Exception e)
+        {
+            System.err.println(e.getMessage());
+        }    
+
+        return result;
+        
+    }
 }
