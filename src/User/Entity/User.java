@@ -1,8 +1,8 @@
-package Student.Entity;
+package User.Entity;
 
 import java.util.Date;
 
-public class Student 
+public class User 
 {
     private int id = 0;
     private String lastname;
@@ -12,7 +12,7 @@ public class Student
     private String address;
     private String nationality;
 
-    public void Student()
+    public void User()
     {
         ++this.id;
     }
