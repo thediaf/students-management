@@ -13,11 +13,17 @@ public class UserModel
     private final String user = "root";
     private final String password = "root";
 
-    /**
-     * Connect to the PostgreSQL database
-     *
-     * @return a Connection object
-     */
+    Connection connect; 
+    public UserModel()
+    {
+        try {
+            connect = this.connexion();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
     public Connection connexion() throws SQLException 
     {
         return DriverManager.getConnection(url, user, password);
@@ -32,7 +38,6 @@ public class UserModel
 
         try 
         {
-            Connection connect = connexion();
 
             PreparedStatement preparedStmt = connect.prepareStatement(query);
             preparedStmt.setString(1, user.getLastname());
@@ -42,7 +47,6 @@ public class UserModel
 
             result = preparedStmt.execute();
             
-            connect.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -59,14 +63,9 @@ public class UserModel
         try
         {
 
-            Connection connect = connexion();
-
             Statement statement = connect.createStatement();
             
             result = statement.executeQuery(query);
-            
-
-            // statement.close();
 
         }
         catch (Exception e)
@@ -85,14 +84,12 @@ public class UserModel
 
         try
         {
-            Connection connect = connexion();
 
             PreparedStatement preparedStmt = connect.prepareStatement(query);
             preparedStmt.setInt(1, id);
 
             response = preparedStmt.execute();
             
-            connect.close();
         }
         catch (Exception e)
         {
@@ -105,14 +102,10 @@ public class UserModel
     public int update(int id, String attribute, String value) 
     {
         int response = 0;
-        // String query = "delete from user where id = ?";
         String query = "update user set login = ? where id = ?";
 
         try
         {
-            Connection connect = connexion();
-
-             // create the java mysql update preparedstatement
             PreparedStatement preparedStmt = connect.prepareStatement(query);
             
             // preparedStmt.setString(1, attribute);
@@ -121,7 +114,6 @@ public class UserModel
 
             response = preparedStmt.executeUpdate();
             
-            connect.close();
         }
         catch (Exception e)
         {

@@ -10,16 +10,24 @@ import User.View.UserView;
 
 public class UserController 
 {
+    private Scanner scanner; 
+    private UserModel userModel;
+    private UserView userView;
+
+    public UserController()
+    {
+        this.scanner = new Scanner(System.in);
+        this.userModel = new UserModel();
+        this.userView = new UserView();
+    }
     public void menu() throws SQLException
     {
-        Scanner scanner = new Scanner(System.in);
-        UserView userView = new UserView();
         int choice;
         
         do {
             userView.menu();
             System.out.print("Choisissez une option: ");
-            choice = scanner.nextInt();
+            choice = this.scanner.nextInt();
             switch (choice) {
                 case 1:
                     System.out.print("\n ############   Affichage de la liste   ###########\n ");
@@ -47,68 +55,57 @@ public class UserController
             }
         } while (choice != 5);
     }
-    
+
     public void insert() 
     {
-        Scanner scanner = new Scanner(System.in);
 
         System.out.print("Donnez le nom: ");
-        String lastname = scanner.next();
+        String lastname = this.scanner.next();
         System.out.print("Donnez le prenom: ");
-        String firstname = scanner.next();
+        String firstname = this.scanner.next();
         System.out.print("Donnez le login: ");
-        String login = scanner.next();
+        String login = this.scanner.next();
         System.out.print("Donnez le mot de passe: ");
-        String password = scanner.next(); 
+        String password = this.scanner.next(); 
 
         User user = new User(lastname, firstname, login, password);
 
 
-        UserModel userModel = new UserModel();
         boolean result =  userModel.insert(user);
 
-        UserView userView = new UserView();
         userView.insert(result);
     }
     
     public void select() throws SQLException 
     {
-        UserModel userModel = new UserModel();
         ResultSet result =  userModel.select();
 
-        UserView userView = new UserView();
         userView.displayUsers(result);
     }
 
     public void update()  
     {
-        Scanner scanner = new Scanner(System.in);
 
         System.out.print("Donnez l'id de l'utilisateur: ");
-        int id = scanner.nextInt();
+        int id = this.scanner.nextInt();
         System.out.print("Donnez l'attribut: ");
-        String attribute = scanner.next();
+        String attribute = this.scanner.next();
         System.out.print("Donnez la valeur: ");
-        String value = scanner.next();
+        String value = this.scanner.next();
 
-        UserModel userModel = new UserModel();
         int response = userModel.update(id, attribute, value);
 
-        UserView userView = new UserView();
         userView.update(response);
     }
 
     public void delete()  
     {
-        Scanner scanner = new Scanner(System.in);
 
         System.out.print("Donnez l'id de l'utilisateur: ");
-        int id = scanner.nextInt();
+        int id = this.scanner.nextInt();
 
-        UserModel userModel = new UserModel();
         boolean response = userModel.delete(id);
 
-        UserView userView = new UserView();
         userView.delete(response);
     }
 }

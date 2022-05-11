@@ -2,10 +2,6 @@ package User.View;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Scanner;
-
-import User.Controller.UserController;
-import User.Entity.User;
 
 public class UserView 
 {
@@ -21,7 +17,7 @@ public class UserView
         System.out.println("|       5 - Quitter                       | "); 
         System.out.println("+ --------------------------------------- + ");   
     }
-    
+
     public void insert(boolean result) 
     {
         
