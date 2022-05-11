@@ -77,4 +77,28 @@ public class UserModel
         return result;
         
     }
+
+    public boolean delete(int id) 
+    {
+        boolean response = true;
+        String query = "delete from user where id = ?";
+
+        try
+        {
+            Connection connect = connexion();
+
+            PreparedStatement preparedStmt = connect.prepareStatement(query);
+            preparedStmt.setInt(1, id);
+
+            response = preparedStmt.execute();
+            
+            connect.close();
+        }
+        catch (Exception e)
+        {
+            System.err.println(e.getMessage());
+        }
+
+        return response;
+    }
 }

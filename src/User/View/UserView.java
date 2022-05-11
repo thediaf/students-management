@@ -36,4 +36,14 @@ public class UserView
         }
         System.out.println("+ ---- + ----------------- + ----------------- + ----------------- + ----------------- + ");
     }
+
+    public void delete(boolean response) 
+    {
+        
+        if (response) {
+            System.out.println("Utilisateur insere");
+        }
+        else
+            System.out.println("Une erreur est subvenue");
+    }    
 }

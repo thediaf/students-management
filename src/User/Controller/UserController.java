@@ -41,4 +41,18 @@ public class UserController
         UserView userView = new UserView();
         userView.displayUsers(result);
     }
+
+    public void delete()  
+    {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Donnez l'id de l'utilisateur: ");
+        int id = scanner.nextInt();
+
+        UserModel userModel = new UserModel();
+        boolean response = userModel.delete(id);
+
+        UserView userView = new UserView();
+        userView.delete(response);
+    }
 }

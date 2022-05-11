@@ -15,12 +15,14 @@ public class Main
         // userController.insert();
 
         UserController userController = new UserController();
-        
+
         try {
             userController.select();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
+        userController.delete();
     }
 }
