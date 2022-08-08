@@ -29,96 +29,48 @@ public class StudentModel
         return DriverManager.getConnection(url, user, password);
     }
 
-    public boolean insert(Student student) 
+    public boolean insert(Student student) throws SQLException 
     {
-        boolean result = true;
-
         String query = "INSERT INTO student(lastname, firstname, code, classroom) "
                 + "VALUES(?, ?, ?, ?)";
 
-        try 
-        {
+        PreparedStatement preparedStmt = connect.prepareStatement(query);
+        preparedStmt.setString(1, student.getLastname());
+        preparedStmt.setString(2, student.getFirstname());
+        preparedStmt.setString(3, student.getCode());
+        preparedStmt.setString(4, student.getClassroom());
 
-            PreparedStatement preparedStmt = connect.prepareStatement(query);
-            preparedStmt.setString(1, student.getLastname());
-            preparedStmt.setString(2, student.getFirstname());
-            preparedStmt.setString(3, student.getCode());
-            preparedStmt.setString(4, student.getClassroom());
-
-            result = preparedStmt.execute();
-            
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-
-        return result;
+        return preparedStmt.execute();
     }
 
-    public ResultSet select() 
+    public ResultSet select() throws SQLException 
     {
-        ResultSet result = null;
-
         String query = "SELECT * FROM student";
 
-        try
-        {
-
-            Statement statement = connect.createStatement();
-            
-            result = statement.executeQuery(query);
-
-        }
-        catch (Exception e)
-        {
-            System.err.println(e.getMessage());
-        }    
-
-        return result;
+        Statement statement = connect.createStatement();
+        
+        return statement.executeQuery(query);
         
     }
 
-    public boolean delete(int id) 
+    public boolean delete(int id) throws SQLException 
     {
-        boolean response = true;
         String query = "delete from student where id = ?";
 
-        try
-        {
+        PreparedStatement preparedStmt = connect.prepareStatement(query);
+        preparedStmt.setInt(1, id);
 
-            PreparedStatement preparedStmt = connect.prepareStatement(query);
-            preparedStmt.setInt(1, id);
-
-            response = preparedStmt.execute();
-            
-        }
-        catch (Exception e)
-        {
-            System.err.println(e.getMessage());
-        }
-
-        return response;
+        return preparedStmt.execute();
     }
 
-    public int update(int id, String value, String query) 
+    public int update(int id, String value, String query) throws SQLException 
     {
-        int response = 0;
         // String query = "update student set classroom = ? where id = ?";
 
-        try
-        {
-            PreparedStatement preparedStmt = connect.prepareStatement(query);
-            
-            preparedStmt.setString(1, value);
-            preparedStmt.setInt(2, id);
-
-            response = preparedStmt.executeUpdate();
-            
-        }
-        catch (Exception e)
-        {
-            System.err.println(e.getMessage());
-        }
-
-        return response;
+        PreparedStatement preparedStmt = connect.prepareStatement(query);
+        preparedStmt.setString(1, value);
+        preparedStmt.setInt(2, id);
+        
+        return preparedStmt.executeUpdate();
     }
 }

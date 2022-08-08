@@ -56,7 +56,7 @@ public class StudentController
         } while (choice != 5);
     }
 
-    public void insert() 
+    public void insert() throws SQLException 
     {
         System.out.print("Donnez le nom: ");
         String lastname = this.scanner.next();
@@ -82,7 +82,7 @@ public class StudentController
         studentView.displayStudents(result);
     }
 
-    public void update()  
+    public void update() throws SQLException  
     {
 
         System.out.print("Donnez l'id de l'etudiant: ");
@@ -113,7 +113,7 @@ public class StudentController
         studentView.update(response);
     }
 
-    public void delete()  
+    public void delete() throws SQLException  
     {
 
         System.out.print("Donnez l'id de l'etudiant: ");
