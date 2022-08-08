@@ -1,20 +1,20 @@
-package User.Model;
+package Student.Model;
 
 import java.sql.*;
 
-import User.Entity.Student;
+import Student.Entity.Student;
 
 /**
- * UserModel
+ * StudentModel
  */
-public class UserModel 
+public class StudentModel 
 {
     private final String url = "jdbc:mysql://localhost:3306/java_exercice";
     private final String user = "root";
     private final String password = "root";
 
     Connection connect; 
-    public UserModel()
+    public StudentModel()
     {
         try {
             connect = this.connexion();

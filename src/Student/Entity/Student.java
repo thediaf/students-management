@@ -1,4 +1,4 @@
-package User.Entity;
+package Student.Entity;
 
 import java.io.Serializable;
 

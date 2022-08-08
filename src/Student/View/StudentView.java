@@ -1,9 +1,9 @@
-package User.View;
+package Student.View;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserView 
+public class StudentView 
 {
     public void menu()
     {
@@ -11,9 +11,9 @@ public class UserView
         System.out.println("|                   MENU                  | ");
         System.out.println("+ --------------------------------------- + ");
         System.out.println("|       1 - Afficher toute la liste       | ");   
-        System.out.println("|       2 - Ajouter un etudiant        | ");   
-        System.out.println("|       3 - Modifier un etudiant       | ");   
-        System.out.println("|       4 - Supprimer un etudiant      | ");   
+        System.out.println("|       2 - Ajouter un etudiant           | ");   
+        System.out.println("|       3 - Modifier un etudiant          | ");   
+        System.out.println("|       4 - Supprimer un etudiant         | ");   
         System.out.println("|       5 - Quitter                       | "); 
         System.out.println("+ --------------------------------------- + ");   
     }
@@ -28,7 +28,7 @@ public class UserView
             System.out.println("etudiant ajoute");
     }    
 
-    public void displayUsers(ResultSet result) throws SQLException
+    public void displayStudents(ResultSet result) throws SQLException
     {
         System.out.println("+ ---- + ----------------- + ----------------- + ");
         System.out.println("|  id  |        Nom        |       Prenom      | ");

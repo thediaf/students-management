@@ -1,32 +1,32 @@
-package User.Controller;
+package Student.Controller;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import User.Entity.Student;
-import User.Entity.User;
-import User.Model.UserModel;
-import User.View.UserView;
+import Student.Entity.Student;
+import Student.Entity.Student;
+import Student.Model.StudentModel;
+import Student.View.StudentView;
 
-public class UserController 
+public class StudentController 
 {
     private Scanner scanner; 
-    private UserModel userModel;
-    private UserView userView;
+    private StudentModel studentModel;
+    private StudentView studentView;
 
-    public UserController()
+    public StudentController()
     {
         this.scanner = new Scanner(System.in);
-        this.userModel = new UserModel();
-        this.userView = new UserView();
+        this.studentModel = new StudentModel();
+        this.studentView = new StudentView();
     }
     public void menu() throws SQLException
     {
         int choice;
         
         do {
-            userView.menu();
+            studentView.menu();
             System.out.print("Choisissez une option: ");
             choice = this.scanner.nextInt();
             switch (choice) {
@@ -68,16 +68,16 @@ public class UserController
         Student student = new Student(lastname, firstname);
 
 
-        boolean result =  userModel.insert(student);
+        boolean result =  studentModel.insert(student);
 
-        userView.insert(result);
+        studentView.insert(result);
     }
     
     public void select() throws SQLException 
     {
-        ResultSet result =  userModel.select();
+        ResultSet result =  studentModel.select();
 
-        userView.displayUsers(result);
+        studentView.displayStudents(result);
     }
 
     public void update()  
@@ -92,23 +92,23 @@ public class UserController
         String query = ""; 
         switch (attribute) {
             case "nom":
-                query = "update user set lastname = ? where id = ?";
+                query = "update student set lastname = ? where id = ?";
                 break;
             case "prenom":
-                query = "update user set firstname = ? where id = ?";
+                query = "update student set firstname = ? where id = ?";
                 break;
             case "login":
-                query = "update user set login = ? where id = ?";
+                query = "update student set login = ? where id = ?";
                 break;
             case "password":
-                query = "update user set lastname = ? where id = ?";
+                query = "update student set lastname = ? where id = ?";
                 break;
             default:
                 break;
         }
-        int response = userModel.update(id, value, query);
+        int response = studentModel.update(id, value, query);
 
-        userView.update(response);
+        studentView.update(response);
     }
 
     public void delete()  
@@ -117,8 +117,8 @@ public class UserController
         System.out.print("Donnez l'id de l'etudiant: ");
         int id = this.scanner.nextInt();
 
-        boolean response = userModel.delete(id);
+        boolean response = studentModel.delete(id);
 
-        userView.delete(response);
+        studentView.delete(response);
     }
 }
