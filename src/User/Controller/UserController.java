@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import User.Entity.Student;
 import User.Entity.User;
 import User.Model.UserModel;
 import User.View.UserView;
@@ -34,15 +35,15 @@ public class UserController
                     this.select();
                     break;
                 case 2:
-                    System.out.print("\n ############   Ajouter un utilisateur   ###########\n ");
+                    System.out.print("\n ############   Ajouter un etudiant   ###########\n ");
                     this.insert();
                     break;
                 case 3:
-                    System.out.print("\n ############   Modifier un utilisateur   ###########\n ");
+                    System.out.print("\n ############   Modifier un etudiant   ###########\n ");
                     this.update();
                     break;
                 case 4:
-                    System.out.print("\n ############   Supprimer un utilisateur   ###########\n ");
+                    System.out.print("\n ############   Supprimer un etudiant   ###########\n ");
                     this.delete();
                     break;
                 case 5:
@@ -63,15 +64,11 @@ public class UserController
         String lastname = this.scanner.next();
         System.out.print("Donnez le prenom: ");
         String firstname = this.scanner.next();
-        System.out.print("Donnez le login: ");
-        String login = this.scanner.next();
-        System.out.print("Donnez le mot de passe: ");
-        String password = this.scanner.next(); 
 
-        User user = new User(lastname, firstname, login, password);
+        Student student = new Student(lastname, firstname);
 
 
-        boolean result =  userModel.insert(user);
+        boolean result =  userModel.insert(student);
 
         userView.insert(result);
     }
@@ -86,7 +83,7 @@ public class UserController
     public void update()  
     {
 
-        System.out.print("Donnez l'id de l'utilisateur: ");
+        System.out.print("Donnez l'id de l'etudiant: ");
         int id = this.scanner.nextInt();
         System.out.print("Donnez l'attribut: ");
         String attribute = this.scanner.next();
@@ -117,7 +114,7 @@ public class UserController
     public void delete()  
     {
 
-        System.out.print("Donnez l'id de l'utilisateur: ");
+        System.out.print("Donnez l'id de l'etudiant: ");
         int id = this.scanner.nextInt();
 
         boolean response = userModel.delete(id);

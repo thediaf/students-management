@@ -2,7 +2,7 @@ package User.Model;
 
 import java.sql.*;
 
-import User.Entity.User;
+import User.Entity.Student;
 
 /**
  * UserModel
@@ -29,21 +29,21 @@ public class UserModel
         return DriverManager.getConnection(url, user, password);
     }
 
-    public boolean insert(User user) 
+    public boolean insert(Student student) 
     {
         boolean result = true;
 
-        String query = "INSERT INTO user(lastname, firstname, login, password) "
-                + "VALUES(?, ?, ?, ?)";
+        String query = "INSERT INTO student(lastname, firstname) "
+                + "VALUES(?, ?)";
 
         try 
         {
 
             PreparedStatement preparedStmt = connect.prepareStatement(query);
-            preparedStmt.setString(1, user.getLastname());
-            preparedStmt.setString(2, user.getFirstname());
-            preparedStmt.setString(3, user.getLogin());
-            preparedStmt.setString(4, user.getPassword());
+            preparedStmt.setString(1, student.getLastname());
+            preparedStmt.setString(2, student.getFirstname());
+            // preparedStmt.setString(3, student.getLogin());
+            // preparedStmt.setString(4, student.getPassword());
 
             result = preparedStmt.execute();
             
@@ -58,7 +58,7 @@ public class UserModel
     {
         ResultSet result = null;
 
-        String query = "SELECT * FROM user";
+        String query = "SELECT * FROM student";
 
         try
         {
@@ -80,7 +80,7 @@ public class UserModel
     public boolean delete(int id) 
     {
         boolean response = true;
-        String query = "delete from user where id = ?";
+        String query = "delete from student where id = ?";
 
         try
         {
@@ -102,7 +102,7 @@ public class UserModel
     public int update(int id, String value, String query) 
     {
         int response = 0;
-        // String query = "update user set login = ? where id = ?";
+        // String query = "update student set login = ? where id = ?";
 
         try
         {
