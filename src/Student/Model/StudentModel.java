@@ -33,8 +33,8 @@ public class StudentModel
     {
         boolean result = true;
 
-        String query = "INSERT INTO student(lastname, firstname) "
-                + "VALUES(?, ?)";
+        String query = "INSERT INTO student(lastname, firstname, code, classroom) "
+                + "VALUES(?, ?, ?, ?)";
 
         try 
         {
@@ -42,8 +42,8 @@ public class StudentModel
             PreparedStatement preparedStmt = connect.prepareStatement(query);
             preparedStmt.setString(1, student.getLastname());
             preparedStmt.setString(2, student.getFirstname());
-            // preparedStmt.setString(3, student.getLogin());
-            // preparedStmt.setString(4, student.getPassword());
+            preparedStmt.setString(3, student.getCode());
+            preparedStmt.setString(4, student.getClassroom());
 
             result = preparedStmt.execute();
             
@@ -102,7 +102,7 @@ public class StudentModel
     public int update(int id, String value, String query) 
     {
         int response = 0;
-        // String query = "update student set login = ? where id = ?";
+        // String query = "update student set classroom = ? where id = ?";
 
         try
         {

@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 import Student.Entity.Student;
-import Student.Entity.Student;
 import Student.Model.StudentModel;
 import Student.View.StudentView;
 
@@ -59,13 +58,16 @@ public class StudentController
 
     public void insert() 
     {
-
         System.out.print("Donnez le nom: ");
         String lastname = this.scanner.next();
         System.out.print("Donnez le prenom: ");
         String firstname = this.scanner.next();
+        System.out.print("Donnez le nom: ");
+        String code = this.scanner.next();
+        System.out.print("Donnez le prenom: ");
+        String classroom = this.scanner.next();
 
-        Student student = new Student(lastname, firstname);
+        Student student = new Student(lastname, firstname, code, classroom);
 
 
         boolean result =  studentModel.insert(student);
@@ -97,11 +99,11 @@ public class StudentController
             case "prenom":
                 query = "update student set firstname = ? where id = ?";
                 break;
-            case "login":
-                query = "update student set login = ? where id = ?";
+            case "code":
+                query = "update student set code = ? where id = ?";
                 break;
-            case "password":
-                query = "update student set lastname = ? where id = ?";
+            case "classe":
+                query = "update student set classroom = ? where id = ?";
                 break;
             default:
                 break;
